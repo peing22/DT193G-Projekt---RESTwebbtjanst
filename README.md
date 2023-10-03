@@ -16,31 +16,36 @@ Utöver de kolumner som ingår vid migrering, innehåller tabellen även kolumne
 I kolumnen *image* lagras den fullständiga sökvägen till uppladdade bildfiler.
 
 ## Routes
-`POST` `api/register` - registrerar konto och returnerar API-token.  
+`POST` `api/register` registrerar konto och returnerar API-token.  
 Värden för *name*, *email* och *password* (minst åtta tecken) måste anges.
 
-`POST` `api/login`
+`POST` `api/login` loggar in användare och returnerar API-token.  
+Värden för *email* och *password* måste anges.
 
-`POST` `api/logout`
+`POST` `api/logout` loggar ut användare genom att förstöra API-token.
 
-`GET` `api/category`
+`GET` `api/category` läser ut samtliga kategorier.
 
-`POST` `api/category`
+`POST` `api/category` skapar och lägger till en kategori.  
+Värde för *name* måste anges.
 
-`DELETE` `api/category/{id}`
+`DELETE` `api/category/{id}` raderar en kategori utifrån id.
 
-`GET` `api/product`
+`GET` `api/product` läser ut samtliga produkter.
 
-`GET` `api/product/{id}`
+`GET` `api/product/{id}` läser ut en produkt utifrån id.
 
-`GET` `api/productsbycat/{id}`
+`GET` `api/productsbycat/{id}` läser ut produkter för en kategori utifrån id.
 
-`GET` `api/product/search/name/{name}`
+`GET` `api/product/search/name/{name}` läser ut en produkt vid sökning på namn.
 
-`POST` `api/product/{id}`
+`POST` `api/product/{id}` skapar och lägger till en produkt knuten till en kategori utifrån id.  
+Värde för *name* och *quantity* måste anges.
 
-`PUT` `api/product/{id}`
+`PUT` `api/product/{id}` uppdaterar en produkts värde för kolumnen *quantity*.  
+Värde för *quantity* måste anges.
 
-`PUT` `api/category/{categoryId}/product/{productId}`
+`PUT` `api/category/{categoryId}/product/{productId}` uppdaterar en produkt för en kategori utifrån id.  
+Värde för *name* och *quantity* måste anges.
 
-`DELETE` `api/product/{id}`
+`DELETE` `api/product/{id}` raderar en produkt utifrån id.
