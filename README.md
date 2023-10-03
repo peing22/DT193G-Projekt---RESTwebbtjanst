@@ -16,17 +16,19 @@ Utöver de kolumner som ingår vid migrering, innehåller tabellen även kolumne
 I kolumnen *image* lagras den fullständiga sökvägen till uppladdade bildfiler.
 
 ## Routes
-`GET` api/category
-
-`POST` api/category
-
-`PUT` api/category/{categoryId}/product/{productId}
-
-`DELETE` api/category/{id}
+`POST` `api/register`
 
 `POST` api/login
 
 `POST` api/logout
+
+`GET` api/category
+
+`POST` api/category
+
+`DELETE` api/category/{id}
+
+
 
 `GET` api/product
 
@@ -34,12 +36,12 @@ I kolumnen *image* lagras den fullständiga sökvägen till uppladdade bildfiler
 
 `GET` api/product/{id}
 
+`GET` api/productsbycat/{id}
+
 `POST` api/product/{id}
 
 `PUT` api/product/{id}
 
+`PUT` api/category/{categoryId}/product/{productId}
+
 `DELETE` api/product/{id}
-
-`GET` api/productsbycat/{id}
-
-`POST` api/register
