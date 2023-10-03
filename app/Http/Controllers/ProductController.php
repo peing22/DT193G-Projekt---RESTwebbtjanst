@@ -49,6 +49,13 @@ class ProductController extends Controller
         }
     }
 
+    // Söker produkt efter namn
+    public function searchProduct($name) 
+    {
+        // Returnerar produkt
+        return Product::where('name', 'like', '%' . $name . '%')->get();
+    }
+
     // Lägger till produkt knuten till en kategori
     public function addProduct(Request $request, $id)
     {
