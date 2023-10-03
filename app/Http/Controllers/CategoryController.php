@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    // Hämtar alla kategorier
+    // Hämtar alla kategorier sorterade efter namn
     public function getCategories()
     {
-        return Category::all();
+        return Category::orderBy('name')->get();
     }
 
     // Lägger till kategori

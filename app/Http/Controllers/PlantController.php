@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class PlantController extends Controller
 {
-    // Hämtar alla plantor
+    // Hämtar alla plantor sorterade efter namn
     public function getPlants()
     {
-        return Plant::all();
+        return Plant::orderBy('name')->get();
     }
 
     // Hämtar planta med specifikt id
@@ -39,8 +39,8 @@ class PlantController extends Controller
         // Om kategorin exixterar
         if ($category != null) {
 
-            // Hämtar och returnerar alla plantor knutna till kategorin
-            $plants = $category->plants;
+            // Hämtar och returnerar alla plantor knutna till kategorin, sorterade efter namn
+            $plants = $category->plants()->orderBy('name')->get();
             return response()->json(['plants' => $plants], 200);
 
         // Om kategorin inte existerar skickas felmeddelande
