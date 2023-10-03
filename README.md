@@ -16,32 +16,35 @@ Utöver de kolumner som ingår vid migrering, innehåller tabellen även kolumne
 I kolumnen *image* lagras den fullständiga sökvägen till uppladdade bildfiler.
 
 ## Routes
-`POST` `api/register`
+`POST` `api/register` - registrerar konto och returnerar API-token
+> {
+    "name" : "Petra Ingemarsson",
+    "email" : "pein2200@student.miun.se",
+    "password" : "password"
+}
 
-`POST` api/login
+`POST` `api/login`
 
-`POST` api/logout
+`POST` `api/logout`
 
-`GET` api/category
+`GET` `api/category`
 
-`POST` api/category
+`POST` `api/category`
 
-`DELETE` api/category/{id}
+`DELETE` `api/category/{id}`
 
+`GET` `api/product`
 
+`GET` `api/product/{id}`
 
-`GET` api/product
+`GET` `api/productsbycat/{id}`
 
-`GET` api/product/search/name/{name}
+`GET` `api/product/search/name/{name}`
 
-`GET` api/product/{id}
+`POST` `api/product/{id}`
 
-`GET` api/productsbycat/{id}
+`PUT` `api/product/{id}`
 
-`POST` api/product/{id}
+`PUT` `api/category/{categoryId}/product/{productId}`
 
-`PUT` api/product/{id}
-
-`PUT` api/category/{categoryId}/product/{productId}
-
-`DELETE` api/product/{id}
+`DELETE` `api/product/{id}`
