@@ -33,7 +33,7 @@ class CategoryController extends Controller
         // Om kategorin exixterar
         if($category != null) {
 
-            // Raderar kategori och bekräftar raderingen
+            // Raderar kategori och bekräftar radering
             $category->delete();
             return response()->json(['Category deleted']);
 

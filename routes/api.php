@@ -24,7 +24,7 @@ Route::get('plant', [PlantController::class, 'getPlants']);
 Route::get('plant/{id}', [PlantController::class, 'getPlantById']);
 Route::get('plantsbycat/{id}', [PlantController::class, 'getPlantsByCategory']);
 Route::post('plant/{id}', [PlantController::class, 'addPlant']);
-Route::put('plant/{id}', [PlantController::class, 'updatePlant']);
+Route::put('category/{categoryId}/plant/{plantId}', [PlantController::class, 'updatePlant']);
 Route::delete('plant/{id}', [PlantController::class, 'deletePlant']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
