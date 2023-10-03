@@ -18,28 +18,28 @@ I kolumnen *image* lagras den fullständiga sökvägen till uppladdade bildfiler
 ## Routes
 `GET` api/category
 
-POST      api/category
+`POST` api/category
 
-PUT       api/category/{categoryId}/product/{productId}
+`PUT` api/category/{categoryId}/product/{productId}
 
-DELETE    api/category/{id}
+`DELETE` api/category/{id}
 
-POST      api/login
+`POST` api/login
 
-POST      api/logout
+`POST` api/logout
 
-GET  api/product
+`GET` api/product
 
-GET  api/product/search/name/{name}
+`GET` api/product/search/name/{name}
 
-GET  api/product/{id}
+`GET` api/product/{id}
 
-POST      api/product/{id}
+`POST` api/product/{id}
 
-PUT       api/product/{id}
+`PUT` api/product/{id}
 
-DELETE    api/product/{id}
+`DELETE` api/product/{id}
 
-GET  api/productsbycat/{id}
+`GET` api/productsbycat/{id}
 
-POST      api/register
+`POST` api/register
