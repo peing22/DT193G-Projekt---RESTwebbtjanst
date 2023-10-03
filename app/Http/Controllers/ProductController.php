@@ -133,17 +133,17 @@ class ProductController extends Controller
                 // Om en bildfil har skickats med
                 if ($request->hasFile('image')) {
     
-                // Lagrar fil i en variabel
-                $image = $request->file('image');
+                    // Lagrar fil i en variabel
+                    $image = $request->file('image');
 
-                // Genererar ett unikt filnamn
-                $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
+                    // Genererar ett unikt filnamn
+                    $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
 
-                // Flyttar bild till katalog
-                $image->move(public_path('uploads'), $imageName);
+                    // Flyttar bild till katalog
+                    $image->move(public_path('uploads'), $imageName);
 
-                // Sökväg till bild som ska lagras i databasen
-                $product->image = 'uploads/' . $imageName;
+                    // Sökväg till bild som ska lagras i databasen
+                    $product->image = 'uploads/' . $imageName;
                 }
     
                 // Sparar uppdaterad produkt i databasen och bekräftar uppdatering
@@ -157,6 +157,33 @@ class ProductController extends Controller
         // Om kategorin inte existerar skickas felmeddelande
         } else {
             return response()->json(['Category not found'], 404);
+        }
+    }
+
+    // Uppdaterar kolumnen quantity
+    public function updateQuantity(Request $request, $id) 
+    {
+        // Lagrar produkt i variabel
+        $product = Product::find($id);
+
+        // Om produkten existerar
+        if ($product != null) {
+            
+            // Validerar
+            $request->validate([
+                'quantity' => 'required|integer'
+            ]);
+
+            // Uppdaterar antal
+            $product->quantity = $request->input('quantity');
+
+            // Sparar uppdaterad produkt i databasen och bekräftar uppdatering
+            $product->save();
+            return response()->json(['Product updated'], 200);
+
+        // Om produkten inte existerar skickas felmeddelande
+        } else {
+            return response()->json(['Product not found'], 404);
         }
     }
 

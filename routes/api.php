@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +17,30 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('category', [CategoryController::class, 'getCategories']);
-Route::post('category', [CategoryController::class, 'addCategory']);
-Route::delete('category/{id}', [CategoryController::class, 'deleteCategory']);
+// Routes som kräver autentisering
+Route::middleware(['auth:sanctum'])->group(function () {
 
-Route::get('product', [ProductController::class, 'getProducts']);
-Route::get('product/{id}', [ProductController::class, 'getProductById']);
-Route::get('productsbycat/{id}', [ProductController::class, 'getProductsByCategory']);
-Route::post('product/{id}', [ProductController::class, 'addProduct']);
-Route::put('category/{categoryId}/product/{productId}', [ProductController::class, 'updateProduct']);
-Route::delete('product/{id}', [ProductController::class, 'deleteProduct']);
+    // Routes för att hantera kategorier
+    Route::get('category', [CategoryController::class, 'getCategories']);
+    Route::post('category', [CategoryController::class, 'addCategory']);
+    Route::delete('category/{id}', [CategoryController::class, 'deleteCategory']);
+
+    // Routes för att hantera produkter
+    Route::get('product', [ProductController::class, 'getProducts']);
+    Route::get('product/{id}', [ProductController::class, 'getProductById']);
+    Route::get('productsbycat/{id}', [ProductController::class, 'getProductsByCategory']);
+    Route::post('product/{id}', [ProductController::class, 'addProduct']);
+    Route::put('category/{categoryId}/product/{productId}', [ProductController::class, 'updateProduct']);
+    Route::put('product/{id}', [ProductController::class, 'updateQuantity']);
+    Route::delete('product/{id}', [ProductController::class, 'deleteProduct']);
+
+    // Route för att logga ur
+    Route::post('logout', [AuthController::class, 'logout']);
+});
+
+// Publika routes för att registrera användare och logga in
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
