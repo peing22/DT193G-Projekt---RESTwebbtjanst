@@ -16,8 +16,7 @@ Utöver de kolumner som ingår vid migrering, innehåller tabellen även kolumne
 I kolumnen *image* lagras den fullständiga sökvägen till uppladdade bildfiler.
 
 ## Routes
---- | --- | ---
-`GET` | api/category | test
+`GET` api/category
 
 POST      api/category
 
