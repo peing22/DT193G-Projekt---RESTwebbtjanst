@@ -35,14 +35,10 @@ class AuthController extends Controller
             'password' => bcrypt($request['password'])
         ]);
 
-        // Lagrar API-token i variabel
-        $token = $user->createToken('APITOKEN')->plainTextToken;
-
-        // Lagrar meddelande, användare och API-token i variabel
+        // Lagrar meddelande och användare i variabel
         $response = [
             'message' => 'Created user',
-            'user' => $user,
-            'token' => $token
+            'user' => $user
         ];
 
         // Returnerar respons
@@ -81,7 +77,8 @@ class AuthController extends Controller
         // Returnerar meddelande och API-token
         return response()->json([
             'message' => 'Logged in',
-            'token' => $user->createToken('APITOKEN')->plainTextToken
+            'token' => $user->createToken('APITOKEN')->plainTextToken,
+            'name' => $user->name
         ], 200);
     }
 
