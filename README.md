@@ -16,7 +16,7 @@ Utöver de kolumner som ingår vid migrering, innehåller tabellen även kolumne
 I kolumnen *image* lagras den fullständiga sökvägen till uppladdade bildfiler.
 
 ## Routes
-`POST` `api/register` registrerar konto och returnerar API-token.  
+`POST` `api/register` registrerar konto.  
 Värden för *name*, *email* och *password* (minst åtta tecken) måste anges.
 
 `POST` `api/login` loggar in användare och returnerar API-token.  
