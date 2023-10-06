@@ -151,6 +151,10 @@ class ProductController extends Controller
 
                     // Sökväg till bild som ska lagras i databasen
                     $product->image = 'uploads/' . $imageName;
+                
+                // Om en bildfil inte har skickats med sätts sökvägen till null
+                } else {
+                    $product->image = null;
                 }
     
                 // Sparar uppdaterad produkt i databasen och bekräftar uppdatering
