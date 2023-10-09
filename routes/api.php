@@ -22,7 +22,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // Routes för att hantera kategorier
     Route::get('category', [CategoryController::class, 'getCategories']);
+    Route::get('category/{id}', [CategoryController::class, 'getCategoryById']);
     Route::post('category', [CategoryController::class, 'addCategory']);
+    Route::put('category/{id}', [CategoryController::class, 'updateCategory']);
     Route::delete('category/{id}', [CategoryController::class, 'deleteCategory']);
 
     // Routes för att hantera produkter
