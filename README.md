@@ -26,7 +26,12 @@ Värden för *email* och *password* måste anges.
 
 `GET` `api/category` läser ut samtliga kategorier.
 
+`GET` `api/category/{id}` läser ut en kategori utifrån id.
+
 `POST` `api/category` skapar och lägger till en kategori.  
+Värde för *name* måste anges.
+
+`PUT` `api/category/{id}` uppdaterar en kategoris värde för kolumnen *name*.  
 Värde för *name* måste anges.
 
 `DELETE` `api/category/{id}` raderar en kategori utifrån id.
