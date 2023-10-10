@@ -50,7 +50,7 @@ class ProductController extends Controller
     }
 
     // Söker produkt efter namn
-    public function searchProduct($name) 
+    public function searchProduct($name)
     {
         // Returnerar produkt
         return Product::where('name', 'like', '%' . $name . '%')->get();
@@ -108,78 +108,65 @@ class ProductController extends Controller
     }
 
     // Uppdaterar produkt med specifikt id
-    public function updateProduct(Request $request, $categoryId, $productId)
+    public function updateProduct(Request $request, $id)
     {
-        // Lagrar kategori i variabel
-        $category = Category::find($categoryId);
-    
-        // Om kategorin existerar
-        if ($category != null) {
+        // Lagrar produkt i variabel
+        $product = Product::find($id);
 
-            // Lagrar produkten inom kategorin i en variabel
-            $product = $category->products()->find($productId);
-    
-            // Om produktn existerar
-            if ($product != null) {
+        // Om produktn existerar
+        if ($product != null) {
 
-                // Validerar
-                $request->validate([
-                    'name' => 'required|string|max:64',
-                    'description' => 'nullable|string',
-                    'image' => 'nullable|image|max:2048',
-                    'price' => 'nullable|integer',
-                    'quantity' => 'required|integer'
-                ]);
-    
-                // Uppdaterar produktens egenskaper
-                $product->name = $request->input('name');
-                $product->description = $request->input('description');
-                $product->price = $request->input('price');
-                $product->quantity = $request->input('quantity');
-    
-                // Om en bildfil har skickats med
-                if ($request->hasFile('image')) {
-    
-                    // Lagrar fil i en variabel
-                    $image = $request->file('image');
+            // Validerar
+            $request->validate([
+                'category_id' => 'required|integer',
+                'name' => 'required|string|max:64',
+                'description' => 'nullable|string',
+                'image' => 'nullable|image|max:2048',
+                'price' => 'nullable|integer',
+                'quantity' => 'required|integer'
+            ]);
 
-                    // Genererar ett unikt filnamn
-                    $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
+            // Uppdaterar produktens egenskaper
+            $product->category_id = $request->input('category_id'); // Lägger till
+            $product->name = $request->input('name');
+            $product->description = $request->input('description');
+            $product->price = $request->input('price');
+            $product->quantity = $request->input('quantity');
 
-                    // Flyttar bild till katalog
-                    $image->move(public_path('uploads'), $imageName);
+            // Om en bildfil har skickats med
+            if ($request->hasFile('image')) {
 
-                    // Sökväg till bild som ska lagras i databasen
-                    $product->image = 'uploads/' . $imageName;
-                
-                // Om en bildfil inte har skickats med sätts sökvägen till null
-                } else {
-                    $product->image = null;
-                }
-    
-                // Sparar uppdaterad produkt i databasen och bekräftar uppdatering
-                $product->save();
-                return response()->json(['Product updated'], 200);
+                // Lagrar fil i en variabel
+                $image = $request->file('image');
 
-            // Om produkten inte existerar skickas felmeddelande
-            } else {
-                return response()->json(['Product not found'], 404);
+                // Genererar ett unikt filnamn
+                $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
+
+                // Flyttar bild till katalog
+                $image->move(public_path('uploads'), $imageName);
+
+                // Sökväg till bild som ska lagras i databasen
+                $product->image = 'uploads/' . $imageName;
             }
-        // Om kategorin inte existerar skickas felmeddelande
+            // Sparar uppdaterad produkt i databasen och bekräftar uppdatering
+            $product->save();
+            return response()->json(['Product updated'], 200);
+
+        // Om produkten inte existerar skickas felmeddelande
         } else {
-            return response()->json(['Category not found'], 404);
+            return response()->json(['Product not found'], 404);
         }
     }
 
     // Uppdaterar kolumnen quantity
-    public function updateQuantity(Request $request, $id) 
+    public function updateQuantity(Request $request, $id)
     {
         // Lagrar produkt i variabel
         $product = Product::find($id);
 
         // Om produkten existerar
         if ($product != null) {
-            
+
             // Validerar
             $request->validate([
                 'quantity' => 'required|integer'
@@ -199,13 +186,13 @@ class ProductController extends Controller
     }
 
     // Raderar produkt med specifikt id
-    public function deleteProduct($id) 
+    public function deleteProduct($id)
     {
         // Lagrar produkt i variabel
         $product = Product::find($id);
 
         // Om produkten existerar
-        if($product != null) {
+        if ($product != null) {
 
             // Raderar produkt och bekräftar radering
             $product->delete();

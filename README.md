@@ -26,7 +26,7 @@ Värden för *email* och *password* måste anges.
 
 `GET` `api/category` läser ut samtliga kategorier.
 
-`GET` `api/category/{id}` läser ut en kategori utifrån id.
+`GET` `api/category/{id}` läser ut en kategori utifrån id. // Behöver troligen inte denna!!!
 
 `POST` `api/category` skapar och lägger till en kategori.  
 Värde för *name* måste anges.
@@ -44,13 +44,13 @@ Värde för *name* måste anges.
 
 `GET` `api/product/search/name/{name}` läser ut en produkt vid sökning på namn.
 
-`POST` `api/product/{id}` skapar och lägger till en produkt knuten till en kategori utifrån id.  
+`POST` `api/product/{id}` skapar och lägger till en produkt knuten till ett kategori-id.  
 Värde för *name* och *quantity* måste anges.
 
-`PUT` `api/product/{id}` uppdaterar en produkts värde för kolumnen *quantity*.  
+`PUT` `api/productquantity/{id}` uppdaterar en produkts värde för kolumnen *quantity*.
 Värde för *quantity* måste anges.
 
-`PUT` `api/category/{categoryId}/product/{productId}` uppdaterar en produkt för en kategori utifrån id.  
-Värde för *name* och *quantity* måste anges.
+`PUT` `api/product/{id}` uppdaterar en produkt utifrån id.
+Värde för *category_id*, *name* och *quantity* måste anges.
 
 `DELETE` `api/product/{id}` raderar en produkt utifrån id.
