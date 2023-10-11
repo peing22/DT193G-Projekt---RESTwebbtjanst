@@ -127,7 +127,7 @@ class ProductController extends Controller
             ]);
 
             // Uppdaterar produktens egenskaper
-            $product->category_id = $request->input('category_id'); // Lägger till
+            $product->category_id = $request->input('category_id');
             $product->name = $request->input('name');
             $product->description = $request->input('description');
             $product->price = $request->input('price');
@@ -136,7 +136,19 @@ class ProductController extends Controller
             // Om en bildfil har skickats med
             if ($request->hasFile('image')) {
 
-                // Lagrar fil i en variabel
+                // Om en bildfil redan existerar för produkten
+                if ($product->image) {
+
+                    // Lagrar den befintliga sökvägen i en variabel
+                    $oldImagePath = public_path($product->image);
+
+                    // Raderar den befintliga bildfilen om den existerar
+                    if (file_exists($oldImagePath)) {
+                        unlink($oldImagePath);
+                    }
+                }
+
+                // Lagrar den nya bildfilen i en variabel
                 $image = $request->file('image');
 
                 // Genererar ett unikt filnamn
@@ -193,6 +205,18 @@ class ProductController extends Controller
 
         // Om produkten existerar
         if ($product != null) {
+
+            // Om en bildfil existerar för produkten
+            if ($product->image) {
+
+                // Lagrar sökvägen till bildfilen i en variabel
+                $oldImagePath = public_path($product->image);
+
+                // Raderar bildfilen om den existerar
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
 
             // Raderar produkt och bekräftar radering
             $product->delete();
