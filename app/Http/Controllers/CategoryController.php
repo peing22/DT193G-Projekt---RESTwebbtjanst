@@ -13,22 +13,6 @@ class CategoryController extends Controller
         return Category::orderBy('name')->get();
     }
 
-    // Hämtar kategori med specifikt id
-    public function getCategoryById($id)
-    {
-        // Lagrar kategori i variabel
-        $category = Category::find($id);
-
-        // Om kategorin existerar returneras den
-        if ($category != null) {
-            return $category;
-
-        // Om kategorin inte existerar skickas felmeddelande
-        } else {
-            return response()->json(['Category not found'], 404);
-        }
-    }
-
     // Lägger till kategori
     public function addCategory(Request $request)
     {

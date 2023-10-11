@@ -14,41 +14,6 @@ class ProductController extends Controller
         return Product::orderBy('name')->get();
     }
 
-    // Hämtar produkt med specifikt id
-    public function getProductById($id)
-    {
-        // Lagrar produkt i variabel
-        $product = Product::find($id);
-
-        // Om produkten existerar returneras den
-        if ($product != null) {
-            return $product;
-
-        // Om produkten inte existerar skickas felmeddelande
-        } else {
-            return response()->json(['Product not found'], 404);
-        }
-    }
-
-    // Hämtar produkter för en specifik kategori
-    public function getProductsByCategory($id)
-    {
-        // Lagrar kategori i variabel
-        $category = Category::find($id);
-
-        // Om kategorin exixterar
-        if ($category != null) {
-
-            // Hämtar och returnerar alla produkter knutna till kategorin, sorterade efter namn
-            $products = $category->products()->orderBy('name')->get();
-            return response()->json(['products' => $products], 200);
-
-        // Om kategorin inte existerar skickas felmeddelande
-        } else {
-            return response()->json(['Category not found'], 404);
-        }
-    }
-
     // Söker produkt efter namn
     public function searchProduct($name)
     {
