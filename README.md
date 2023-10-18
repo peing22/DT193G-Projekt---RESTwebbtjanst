@@ -5,7 +5,7 @@ REST-webbtjänsten hanterar data om ett företags olika produkter och har implem
 
 För att kunna hantera data i REST-webbtjänsten krävs autentisering. Det innebär att en användare måste logga in med befintliga kontouppgifter för att kunna nyttja REST-webbtjänstens CRUD-funktionalitet. Väl inloggad är det även möjligt att registrera nya användarkonton.
 
-Data presenteras i JSON-format. 
+Nedan redogörs för respektive route. Data presenteras i JSON-format.
 
 ## Tabellen "categories"
 Utöver de kolumner som ingår vid migrering, innehåller tabellen även kolumnen *name* (textsträng). Ett värde för denna kolumn måste anges när en kategori ska läggas till.
