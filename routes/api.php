@@ -20,25 +20,29 @@ use App\Http\Controllers\AuthController;
 // Routes som kräver autentisering
 Route::middleware(['auth:sanctum'])->group(function () {
 
-    // Route för att registrera användare
-    Route::post('register', [AuthController::class, 'register']);
+    // Routes för att registrera användare och logga ut
+    Route::controller(AuthController::class)->group(function () {
+        Route::post('register', 'register');
+        Route::post('logout', 'logout');
+    });
 
     // Routes för att hantera kategorier
-    Route::get('category', [CategoryController::class, 'getCategories']);
-    Route::post('category', [CategoryController::class, 'addCategory']);
-    Route::put('category/{id}', [CategoryController::class, 'updateCategory']);
-    Route::delete('category/{id}', [CategoryController::class, 'deleteCategory']);
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('category', 'getCategories');
+        Route::post('category', 'addCategory');
+        Route::put('category/{id}', 'updateCategory');
+        Route::delete('category/{id}', 'deleteCategory');
+    });
 
     // Routes för att hantera produkter
-    Route::get('product', [ProductController::class, 'getProducts']);
-    Route::get('product/search/name/{name}', [ProductController::class, 'searchProduct']);
-    Route::post('product/{id}', [ProductController::class, 'addProduct']);
-    Route::put('product/{id}', [ProductController::class, 'updateProduct']);
-    Route::put('productquantity/{id}', [ProductController::class, 'updateQuantity']);
-    Route::delete('product/{id}', [ProductController::class, 'deleteProduct']);
-
-    // Route för att logga ut
-    Route::post('logout', [AuthController::class, 'logout']);
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('product', 'getProducts');
+        Route::get('product/search/name/{name}', 'searchProduct');
+        Route::post('product/{id}', 'addProduct');
+        Route::put('product/{id}', 'updateProduct');
+        Route::put('productquantity/{id}', 'updateQuantity');
+        Route::delete('product/{id}', 'deleteProduct');
+    });    
 });
 
 // Route för att logga in
