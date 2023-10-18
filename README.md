@@ -1,5 +1,5 @@
 # DT193G Projekt - REST-webbtjänst
-Detta repo innehåller en REST-webbtjänst skapad med backendramverket Laravel.
+Detta repo innehåller en REST-webbtjänst skapad med ramverket Laravel.
 
 REST-webbtjänsten hanterar data om ett företags olika produkter och har implementerad CRUD-funktionalitet som möjliggör utläsning, tillägg, ändring och radering av data från en tabell i en databas. Varje produkt relaterar till en specifik kategori i en annan tabell i databasen. Det är även möjligt att läsa ut, lägga till, ändra och radera data från tabellen som lagrar kategorier. Nedan redogörs mer ingående för respektive tabell.
 
