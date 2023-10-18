@@ -20,9 +20,6 @@ use App\Http\Controllers\AuthController;
 // Routes som kräver autentisering
 Route::middleware(['auth:sanctum'])->group(function () {
 
-    // Route för att registrera användare
-    Route::post('register', [AuthController::class, 'register']);
-
     // Routes för att hantera kategorier
     Route::get('category', [CategoryController::class, 'getCategories']);
     Route::post('category', [CategoryController::class, 'addCategory']);
@@ -41,7 +38,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
 });
 
-// Publik route för att logga in
+// Route för att registrera användare
+Route::post('register', [AuthController::class, 'register']);
+
+// Route för att logga in
 Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
