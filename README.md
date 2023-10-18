@@ -18,36 +18,36 @@ I kolumnen *image* lagras den fullständiga sökvägen till uppladdade bildfiler
 ## Routes
 Följande routes finns tillgängliga:
 
-* `POST` `api/register` registrerar konto.  
+* `POST` `api/register` för att registrera nytt användarkonto.  
 Värden för *name*, *email* och *password* (minst åtta tecken) måste anges.
 
-`POST` `api/login` loggar in användare och returnerar API-token.  
+* `POST` `api/login` för att logga in användare och returnera API-token.  
 Värden för *email* och *password* måste anges.
 
-`POST` `api/logout` loggar ut användare genom att radera API-token.
+* `POST` `api/logout` för att logga ut användare genom att radera API-token.
 
-`GET` `api/category` läser ut samtliga kategorier.
+* `GET` `api/category` för att läsa ut samtliga kategorier.
 
-`POST` `api/category` skapar och lägger till en kategori.  
+* `POST` `api/category` för att skapa och lägga till en kategori.  
 Värde för *name* måste anges.
 
-`PUT` `api/category/{id}` uppdaterar en kategori utifrån id.  
+* `PUT` `api/category/{id}` för att uppdatera en kategori utifrån id.  
 Värde för *name* måste anges.
 
-`DELETE` `api/category/{id}` raderar en kategori utifrån id.
+* `DELETE` `api/category/{id}` för att radera en kategori utifrån id.
 
-`GET` `api/product` läser ut samtliga produkter.
+* `GET` `api/product` för att läsa ut samtliga produkter.
 
-`GET` `api/product/search/name/{name}` läser ut en produkt vid sökning på namn.  
+* `GET` `api/product/search/name/{name}` för att läsa ut en produkt vid sökning på namn.  
 Värde för *name* måste anges.
 
-`POST` `api/product/{id}` skapar och lägger till en produkt knuten till ett kategori-id.  
+* `POST` `api/product/{id}` för att skapa och lägga till en produkt knuten till ett kategori-id.  
 Värde för *category_id*, *name* och *quantity* måste anges.
 
-`PUT` `api/productquantity/{id}` uppdaterar en produkts värde för kolumnen *quantity* utifrån id.  
+* `PUT` `api/productquantity/{id}` för att uppdatera en produkts värde för kolumnen *quantity* utifrån id.  
 Värde för *quantity* måste anges.
 
-`PUT` `api/product/{id}` uppdaterar en produkt utifrån id.  
+* `PUT` `api/product/{id}` för att uppdatera en produkt utifrån id.  
 Värde för *category_id*, *name* och *quantity* måste anges.
 
-`DELETE` `api/product/{id}` raderar en produkt utifrån id.
+* `DELETE` `api/product/{id}` för att radera en produkt utifrån id.
