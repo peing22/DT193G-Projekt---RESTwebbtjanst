@@ -1,11 +1,11 @@
 # DT193G Projekt - REST-webbtjänst
 Detta repo innehåller en REST-webbtjänst skapad med ramverket Laravel.
 
-REST-webbtjänsten hanterar data om ett företags olika produkter och har implementerad CRUD-funktionalitet som möjliggör utläsning, tillägg, ändring och radering av data från en tabell i en databas. Varje produkt relaterar till en specifik kategori i en annan tabell i databasen. Det är även möjligt att läsa ut, lägga till, ändra och radera data från tabellen som lagrar kategorier. Nedan redogörs mer ingående för respektive tabell.
+REST-webbtjänsten hanterar data om ett företags olika produkter och har implementerad CRUD-funktionalitet som möjliggör utläsning, tillägg, ändring och radering av data från en tabell i en databas. Varje produkt relaterar till en specifik kategori i en annan tabell i databasen. Det är även möjligt att läsa ut, lägga till, ändra och radera data från tabellen som lagrar kategorier. Nedan redogörs mer ingående för respektive tabell och för de routes som finns tillgängliga.
 
 För att kunna hantera data i REST-webbtjänsten krävs autentisering. Det innebär att en användare måste logga in med befintliga kontouppgifter för att kunna nyttja REST-webbtjänstens CRUD-funktionalitet. Väl inloggad är det även möjligt att registrera nya användarkonton.
 
-Nedan redogörs för respektive route. Data presenteras i JSON-format.
+Data presenteras i JSON-format.
 
 ## Tabellen "categories"
 Utöver de kolumner som ingår vid migrering, innehåller tabellen även kolumnen *name* (textsträng). Ett värde för denna kolumn måste anges när en kategori ska läggas till.
