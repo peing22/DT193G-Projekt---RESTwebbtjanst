@@ -18,7 +18,7 @@ use App\Http\Controllers\AuthController;
 */
 
 // Routes som kräver autentisering
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
 
     // Routes för att registrera användare och logga ut
     Route::controller(AuthController::class)->group(function () {
